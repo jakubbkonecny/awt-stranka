@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizuj svoj život</title>
+    <link rel="stylesheet" href="screenStyle.css">
+    <link rel="stylesheet" href="public/css/printStyle.css">
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #FFA500 50%, #A9A9A9 50%);
+            color: white;
+            padding: 20px 30px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        header img { max-height: 120px; border-radius: 60px; }
+        .logo-clock { display: flex; align-items: center; gap: 20px; }
+    </style>
+</head>
+<body>
+<header>
+    <div>
+        <h1>Aplikácie na organizáciu času</h1>
+        <p>Top aplikácie na plánovanie úloh, financií a športových aktivít</p>
+    </div>
+    <div class="logo-clock">
+        <img src="fig/logo.png" alt="Logo blogu">
+        <svg width="80" height="80" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" fill="#FFA500" stroke="#333" stroke-width="4"/>
+            <line x1="100" y1="100" x2="100" y2="50" stroke="#333" stroke-width="6"/>
+            <line x1="100" y1="100" x2="140" y2="100" stroke="#333" stroke-width="4"/>
+        </svg>
+    </div>
+</header>
+
+<main>
+    <div class="article-card">
+        <div>
+            <h3><a href="article1.html">1. Top 5 aplikácií na plánovanie úloh</a></h3>
+            <p>Aplikácie, ktoré vám pomôžu mať prehľad o úlohách a cieľoch.</p>
+        </div>
+    </div>
+
+    <div class="article-card">
+        <div>
+            <h3><a href="article2.html">2. Najlepšie aplikácie na správu financií</a></h3>
+            <p>Aplikácie na príjmy, výdavky a efektívne plánovanie rozpočtu.</p>
+        </div>
+    </div>
+
+    <div class="article-card">
+        <div>
+            <h3><a href="article3.html">3. Aplikácie pre zdravý životný štýl a šport</a></h3>
+            <p>Aplikácie, ktoré sa zameriavajú na zdravé návyky, pohyb, pitný režim a pod.</p>
+        </div>
+    </div>
+</main>
+
+<!-- ======== FORMULÁR NÁZORU ======== -->
+<section id="feedback-section">
+    <h2>Váš názor na stránku</h2>
+    <form id="feedbackForm">
+        <label for="name">Meno:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="imageUrl">URL obrázka (voliteľné):</label>
+        <input type="url" id="imageUrl" name="imageUrl" placeholder="https://...">
+
+        <p>Aký typ obsahu sa vám najviac páči?</p>
+        <label><input type="radio" name="contentType" value="Plánovanie" required> Plánovanie</label>
+        <label><input type="radio" name="contentType" value="Financie"> Financie</label>
+        <label><input type="radio" name="contentType" value="Šport a zdravie"> Šport a zdravie</label>
+
+        <p>Čo na stránke oceňujete?</p>
+        <label><input type="checkbox" id="design" name="design"> Dizajn</label>
+        <label><input type="checkbox" id="content" name="content"> Obsah</label>
+        <label><input type="checkbox" id="clarity" name="clarity"> Prehľadnosť</label>
+
+        <label for="keywords">Kľúčové slová:</label>
+        <input list="keywordsList" id="keywords" name="keywords">
+        <datalist id="keywordsList">
+            <option value="organizácia">
+            <option value="produktivita">
+            <option value="plánovanie">
+            <option value="financie">
+            <option value="zdravie">
+        </datalist>
+
+        <label for="opinion">Váš názor:</label>
+        <textarea id="opinion" name="opinion" rows="5" required></textarea>
+
+        <label>
+            <input type="checkbox" id="willReturn"> Určite sa sem vrátim.
+        </label>
+
+        <div class="form-buttons">
+            <button type="submit">Odoslať</button>
+            <button type="reset">Vymazať</button>
+        </div>
+    </form>
+
+    <h3>Odoslané názory:</h3>
+    <div id="opinionsList"></div>
+</section>
+
+<!-- ======== Mustache šablóna pre názory ======== -->
+<script id="mTmplOneOpinion" type="text/template">
+    <div class="opinion-card">
+        <h4>{{name}} ({{email}})</h4>
+        {{#imageUrl}}
+        <img src="{{imageUrl}}" alt="Obrázok používateľa">
+        {{/imageUrl}}
+        <p><strong>Typ obsahu:</strong> {{contentType}}</p>
+        <p><strong>Oceňuje:</strong> {{likes}}</p>
+        <p><strong>Kľúčové slová:</strong> {{keywords}}</p>
+        <p><strong>Názor:</strong> {{opinion}}</p>
+        <p><em>{{willReturnMessage}}</em></p>
+        <small>Odoslané: {{createdDate}}</small>
+    </div>
+</script>
+
+<footer>
+    &copy; Autor: Jakub Konečný | <a href="mailto:jakub.konecny9999@gmail.com">Kontakt</a>
+</footer>
+
+<!-- ======== JS moduly ======== -->
+<script type="module">
+    import OpinionsHandlerMustache from './js/opinionsHandlerMustache.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        window.opnsHndlr = new OpinionsHandlerMustache(
+            'feedbackForm',
+            'opinionsList',
+            'mTmplOneOpinion'
+        );
+    });
+</script>
+</body>
+</html>

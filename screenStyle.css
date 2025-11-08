@@ -1,0 +1,223 @@
+@media screen {
+
+    body {
+        font-family: 'Arial', Helvetica, sans-serif;
+        background: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 0 1rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        transition: background 0.3s ease;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    header {
+        background: linear-gradient(135deg, #FFA500 50%, #A9A9A9 50%);
+        color: white;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+        display: inline-block;
+        animation: slideDown 1s ease-out;
+    }
+
+    @keyframes slideDown {
+        0% { transform: translateY(-20px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .article-card {
+        background: white;
+        border-radius: 1.2rem;
+        box-shadow: 0 0.6rem 1.2rem rgba(0,0,0,0.1);
+        padding: 2rem;
+        margin: 2rem 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* === ODKAZY V NÁZVOCH ČLÁNKOV === */
+    .article-card a {
+        color: #000;              /* čierna farba textu */
+        text-decoration: none;    /* odstráni podčiarknutie */
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .article-card a:hover {
+        color: #FFA500;           /* po prechode myšou oranžová */
+        text-decoration: underline;
+    }
+
+    .article-card:hover {
+        transform: translateY(-0.3rem) rotateY(10deg);
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
+    }
+
+    /* ======== FORMULÁR NÁZORU ======== */
+
+    #feedback-section {
+        background: #fff;
+        padding: 2rem;
+        margin: 3rem auto;
+        border-radius: 1rem;
+        box-shadow: 0 0.6rem 1.2rem rgba(0,0,0,0.1);
+        max-width: 700px;
+    }
+
+    #feedback-section h2, #feedback-section h3 {
+        text-align: center;
+        color: #FFA500;
+    }
+
+    form label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+
+    form input, form textarea, form datalist {
+        width: 100%;
+        padding: 0.7rem;
+        margin-top: 0.3rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+    }
+
+    form input:required:invalid, textarea:required:invalid {
+        border-color: red;
+        background: #ffe6e6;
+    }
+
+    form input:required:valid, textarea:required:valid {
+        border-color: green;
+        background: #e6ffe6;
+    }
+
+    .form-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    button {
+        padding: 0.8rem 1.5rem;
+        background: #FFA500;
+        color: white;
+        border: none;
+        border-radius: 0.8rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: #ff8800;
+    }
+
+    .opinion-card {
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 0.8rem;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .opinion-card img {
+        max-width: 100%;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    /* ======== TABUĽKY ======== */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 2rem 0;
+        border-radius: 1rem;
+        overflow: hidden;
+        font-size: 0.95rem;
+    }
+
+    th, td {
+        border: 2px solid #999;
+        padding: 0.8rem;
+        text-align: center;
+    }
+
+    th {
+        background-color: #FFA500;
+        color: white;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background: #f9f9f9;
+    }
+
+    tr:hover {
+        background: #fff3e0;
+    }
+}
+
+/* ======== NAVIGÁCIA ======== */
+
+nav {
+    background: transparent;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: #FFA500;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.7rem 1.2rem;
+    border: 2px solid #FFA500;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    background: #FFA500;
+    color: white;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 10px rgba(255,165,0,0.3);
+}
+
+nav ul li a:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+}
